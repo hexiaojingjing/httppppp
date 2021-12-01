@@ -1,6 +1,21 @@
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.example.myapplication'
+                artifactId = 'myapplication'
+                version = '1.0.0'
+            }
+        }
+    }
+}
+
 
 android {
     compileSdk 30
